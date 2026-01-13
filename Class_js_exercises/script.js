@@ -176,7 +176,7 @@
 
 //Metodos de iteración
 // forEach() - ejecutar función para cada elemento
-let numeros = [1, 2, 3, 4, 5];
+//let numeros = [1, 2, 3, 4, 5];
 // numeros.forEach(function(numero) {      //crea un iterador llamado numero que recorrera cada elemento del array
 //     console.log(numero * 2);  //multiplica cada elemento de la lista *2
 // });
@@ -211,7 +211,7 @@ let numeros = [1, 2, 3, 4, 5];
 
 // //Métodos de Modificación
 
-let letras = ['a', 'b', 'c', 'd', 'e'];
+//let letras = ['a', 'b', 'c', 'd', 'e'];
 
 // // slice() - extraer porción (no modifica original)
 //let porcion = letras.slice(1, 4); //extrae los elementos entre la posicion 1 y 4 
@@ -252,19 +252,184 @@ let letras = ['a', 'b', 'c', 'd', 'e'];
 //Arrays Multidimensionales
 
 // Array de arrays (matriz)
-let matriz = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-];
+// let matriz = [
+//     [1, 2, 3],
+//     [4, 5, 6],
+//     [7, 8, 9]
+// ];
 
-console.log(matriz[0][0]); // 1
-console.log(matriz[1][2]); // 6
-console.log(matriz[2][1]); // 8
+// console.log(matriz[0][0]); // 1
+// console.log(matriz[1][2]); // 6
+// console.log(matriz[2][1]); // 8
 
-// Recorrer matriz
-for (let i = 0; i < matriz.length; i++) {
-    for (let j = 0; j < matriz[i].length; j++) {
-        console.log(matriz[i][j]);
-    }
+// // Recorrer matriz
+// for (let i = 0; i < matriz.length; i++) {
+//     for (let j = 0; j < matriz[i].length; j++) {
+//         console.log(matriz[i][j]);
+//     }
+// }
+
+
+// .map  retorna un nuevo Array modificado
+
+// const numbers = [1,2,3,4,5]
+// const doubles = numbers.map((num)=>num*8)
+// console.log(doubles);
+
+// //.for each
+
+// numbers.forEach((number)=> {
+//     console.log(`El doble es ${number*2}`)
+// })
+
+// const coders=[
+//     {name: 'Edwin', cohort:1},
+//     {name: 'Milton', cohort:2},
+//     {name: 'Javier', cohort:3}
+// ];
+// coders.forEach((coder)=>{
+//     const message = `Hola ${coder.name} pertenece a ${coder.cohort}`
+//     console.log(message);
+    
+// })
+
+//for...of
+
+//Teoría
+//for...of recorre los valores de estructuras iterables como arrays, strings, sets y maps.
+
+// Ejemplo
+// const developers = ['Antony', 'Kevin', 'Robin'];
+
+// for (const dev of developers) {
+//   console.log(dev);
+// }
+
+//for in para acceder a un diccionario
+//for...in
+//Teoría
+//for...in recorre las claves de un objeto. No se recomienda usarlo con arrays.
+
+//Ejemplo
+// const teamLeader = {
+//   name: 'Antony',
+//   language: 'JavaScript'
+// };
+
+// for (const key in teamLeader) {
+//   console.log(`${key}: ${teamLeader[key]}`);
+// }
+
+
+
+// const user ={
+//     name: "Kevin",
+//     lastName: "Restrepo",
+//     age: 19,
+//     email: "kevin@correo.com",
+//     address:{
+//         street: "avenida siempre viva",
+//         number: 123,
+//         city: "Medellin"
+//     }
+// }
+// console.log(Object.keys(user))
+// console.log(Object.values(user));
+// console.log(Object.entries(user));
+
+// const arrayKeys = Object.values(user)
+// console.log(arrayKeys[2])  // imprimira: 19 
+
+//console.table() permite imprimir un array u objeto en forma de tabla
+
+//Metodos comunes para strings:
+
+// toUpperCase(): Convierte el texto a mayúsculas
+// const name2= "David Henao"
+// const upperCase = name2.toUpperCase()
+// console.log(upperCase);
+// toLowerCase(): Convierte el texto a minúsculas
+// const name3 = "David Henao";
+// const upperCase2 = name3.toLowerCase()
+// console.log(upperCase2);
+
+// trim(): Elimina espacios en blanco al inicio y al final
+// const name2 = " David Henao ";
+// const trim =  name2.trim()
+// console.log(trim);
+
+
+// split(): Divide el string en un array según un separador
+//const name3 = "David Henao";
+// slice(): Extrae una parte del string
+//const name3 = "David Henao";
+// substring(): Similar a slice, extrae caracteres entre dos índices
+//const name3 = "David Henao";
+// replace(): Reemplaza la primera coincidencia de un texto
+//const name3 = "David Henao";
+// replaceAll(): Reemplaza todas las coincidencias de un texto
+//const name3 = "David Henao";
+// includes(): Verifica si contiene un texto específico
+//const name3 = "David Henao";
+// startsWith(): Verifica si comienza con un texto específico
+//const name3 = "David Henao";
+// endsWith(): Verifica si termina con un texto específico
+// indexOf(): Devuelve la posición de la primera coincidencia
+// charAt(): Devuelve el carácter en una posición específica
+// repeat(): Repite el string n veces
+// padStart(): Rellena el inicio hasta alcanzar una longitud
+// padEnd(): Rellena el final hasta alcanzar una longitud
+
+
+//ejercicio de clase imprimir por separado y en español la fecha del dia
+
+console.log(new Date)  // imprime la fecha actual
+const currentDate = new Date
+const year= currentDate.getFullYear()
+const time = currentDate.toLocaleTimeString()
+const day= currentDate.getDate()
+const month=currentDate.getMonth()
+const weekDays={
+    1: "Lunes",
+    2: "Martes",
+    3: "Miercoles",
+    4: "Jueves",
+    5: "Viernes",
+    6: "Sabado",
+    0: "Domingo"
 }
+const months = {
+    0: "Enero",
+    1: "Febrero",
+    2: "Marzo",
+    3: "Abril",
+    4: "Mayo",
+    5: "Junio",
+    6: "Julio",
+    7: "Agosto",
+    8: "Septiembre",
+    9: "Octubre",
+    10: "Noviembre",
+    11: "Diciembre",
+};
+const dayOfWeek= new Date().getDay()
+const currentDay= weekDays[dayOfWeek]
+const convertMonth= new Date().getMonth()
+const currentMonth= months[convertMonth]
+
+console.log(`La fecha de hoy es ${currentDay}  ${day} de  ${currentMonth} de ${year} y la hora es ${time}`);
+
+const button = document.getElementById("buttonTime");
+button.addEventListener
+
+
+
+//importando funciones de otro documento
+import { saludar, upperCase } from "./utils.js"
+saludar()
+
+
+//otra forma de importar 
+let name = "julian";
+console.log(upperCase(name));
+
