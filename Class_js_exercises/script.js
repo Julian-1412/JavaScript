@@ -419,9 +419,46 @@ const currentMonth= months[convertMonth]
 
 console.log(`La fecha de hoy es ${currentDay}  ${day} de  ${currentMonth} de ${year} y la hora es ${time}`);
 
+//funcion para manipular el dom 
 const button = document.getElementById("buttonTime");
-button.addEventListener
+button.addEventListener('click',function(){
+const currentDate = new Date
+const year= currentDate.getFullYear()
+const time = currentDate.toLocaleTimeString()
+const day= currentDate.getDate()
+const month=currentDate.getMonth()
+const weekDays={
+    1: "Lunes",
+    2: "Martes",
+    3: "Miercoles",
+    4: "Jueves",
+    5: "Viernes",
+    6: "Sabado",
+    0: "Domingo"
+}
+const months = {
+    0: "Enero",
+    1: "Febrero",
+    2: "Marzo",
+    3: "Abril",
+    4: "Mayo",
+    5: "Junio",
+    6: "Julio",
+    7: "Agosto",
+    8: "Septiembre",
+    9: "Octubre",
+    10: "Noviembre",
+    11: "Diciembre",
+};
+const dayOfWeek= new Date().getDay()
+const currentDay= weekDays[dayOfWeek]
+const convertMonth= new Date().getMonth()
+const currentMonth= months[convertMonth]
 
+const message =(`La fecha de hoy es ${currentDay}  ${day} de  ${currentMonth} de ${year} y la hora es ${time}`);
+const info = document.getElementById("new_info")
+info.textContent=message;  
+})
 
 
 //importando funciones de otro documento
