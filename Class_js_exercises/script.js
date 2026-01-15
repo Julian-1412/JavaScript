@@ -470,6 +470,7 @@
 // let name = "julian";
 // console.log(upperCase(name));
 
+//importando api del clima
 import { getWeather } from "./services/weather.js"
 
 const getResult= async ()=>{
@@ -493,3 +494,82 @@ button.addEventListener('click',()=>{
     getResult()
     
 })
+
+
+
+//funcion dentro de otra funcion (closure)
+// function crearMultiplicador(mul){ //mul toma el valor de 8 o 2  en linea 507 y 508
+//     return function(num){ //num toma el valor de 100 o 20 en lienas 510 y 511
+//         return mul*num
+//     }
+// }
+
+// const multiplicadorPor8=crearMultiplicador(8)
+// const multiplicadorPor2=crearMultiplicador(2)
+
+// console.log(multiplicadorPor8(100));
+// console.log(multiplicadorPor2(20));
+
+
+//callback funcion que se pasa como argumento a otra funcion
+// function saludarOtrafuncion(name,callback){
+//     console.log(`Hola ${name}`);
+    
+//     callback(2,4)
+// }
+
+// saludarOtrafuncion("Julian", function(a,b){
+//     console.log(a+b);
+    
+// })
+
+// const numbers=[1,2,3,9,8,7,0];
+
+// numbers.forEach((number)=>{
+//     console.log(number*100);
+    
+// })
+
+//This en funciones
+
+// const objeto={
+//     name: "Hugo",
+//     lastname: "Mbappe",
+//     isActive:true,
+//     saludar:function(){
+//         console.log(`Hello ${this.name}`); //opcion con this
+//         return "desde js"
+//     }
+
+// }
+// console.log(objeto.lastname)
+// console.log(objeto.saludar());
+
+
+//crear una promesa
+
+let promesa = new Promise((resolve, reject) => {
+    let falla = true;
+
+    if (falla) {
+    // Solo debes llamar a la función reject y pasarle el motivo
+    reject("Error: la operación falló"); 
+    } else {
+        setTimeout(() => {
+        resolve([
+            { name: "esteban", lastname: "perez" },
+            { name: "esteban", lastname: "perez" },
+            { name: "esteban", lastname: "perez" },
+        ]);
+        }, 3000);
+    }
+});
+
+promesa
+.then((resp) => {
+    console.log(resp);
+})
+.catch((err) => {
+    // Ahora el catch recibe el mensaje del reject
+    console.error(err); 
+});
