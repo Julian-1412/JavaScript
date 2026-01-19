@@ -1,0 +1,25 @@
+.card{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px black;
+    background-color: bisque;
+}
+.toogle{
+    font-size: 40px;
+    width: 300px;
+    height: 500px;
+    background-color: grey;
+    color: brown;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+    justify-content: space-around;
+    cursor: pointer;
+    box-shadow: 0 5px 30px black;
+    border: 2px dashed rgb(231, 235, 14);
+}

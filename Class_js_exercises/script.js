@@ -54,7 +54,6 @@
 // result= sumar(2,4)
 // console.log(result)
 
-
 //switch para validaciones
 //se utiliza cuando tengo que usar varios elif
 
@@ -81,7 +80,6 @@
 // Calcular el promedio y mostrarlo en el DOM.
 // Usar una condicional para mostrar si el estudiante aprobó (promedio ≥ 3.0) o reprobó.
 // usar validación de solo numeros en los campos de las notas.
-
 
 //opcion donde ya se ingresa el promedio de notas
 // function pedirNota(mensaje){
@@ -144,7 +142,7 @@
 
 // }
 
- //const fruits =["manzana","pera","banano","mora","lulo"]
+//const fruits =["manzana","pera","banano","mora","lulo"]
 // console.log(fruits.length) // permite saber la cantidad de elementos del array
 // for (let i =0; i< fruits.length; i++){
 //     console.log(`la fruta es ${fruits[i]}`)
@@ -182,7 +180,7 @@
 // });
 
 // // map() - crear nuevo array transformado
-//let duplicados = numeros.map(num => num * 2); //permite crear un nuevo array en este caso duplicando sus elementos 
+//let duplicados = numeros.map(num => num * 2); //permite crear un nuevo array en este caso duplicando sus elementos
 //console.log(duplicados); // [2, 4, 6, 8, 10]
 
 // // filter() - filtrar elementos
@@ -190,7 +188,7 @@
 // console.log(mayoresQue2); // [3, 4, 5]
 
 // // find() - encontrar el primer elemento que cumple condición
-// let encontrado = numeros.find(num => num > 3); //busca en el array el primer numero mayor que 3 
+// let encontrado = numeros.find(num => num > 3); //busca en el array el primer numero mayor que 3
 // console.log(encontrado); // 4
 
 // // reduce() - reducir a un solo valor
@@ -199,7 +197,6 @@
 //ejemplo
 // let suma =numeros.reduce((a,b)=>a+b)
 // console.log(suma);
-
 
 // // some() - verifica si al menos uno cumple
 // let hayMayoresQue4 = numeros.some(num => num > 4);
@@ -214,7 +211,7 @@
 //let letras = ['a', 'b', 'c', 'd', 'e'];
 
 // // slice() - extraer porción (no modifica original)
-//let porcion = letras.slice(1, 4); //extrae los elementos entre la posicion 1 y 4 
+//let porcion = letras.slice(1, 4); //extrae los elementos entre la posicion 1 y 4
 //console.log(porcion); // ['b', 'c', 'd']
 // console.log(letras); // ['a', 'b', 'c', 'd', 'e']
 
@@ -240,9 +237,8 @@
 
 // // sort() - ordenar
 //let desordenado = [3, 1, 4, 1, 5];
-//desordenado.sort(); //solo funciona si los numeros solo tienen un decimal, pues solo tiene en cuenta el orden para el primer decimal del numero 
+//desordenado.sort(); //solo funciona si los numeros solo tienen un decimal, pues solo tiene en cuenta el orden para el primer decimal del numero
 //console.log(desordenado); // [1, 1, 3, 4, 5]
-
 
 // // sort con función comparadora (para números)
 // let numeros2 = [10, 5, 40, 25, 1000, 1];
@@ -269,7 +265,6 @@
 //     }
 // }
 
-
 // .map  retorna un nuevo Array modificado
 
 // const numbers = [1,2,3,4,5]
@@ -290,7 +285,7 @@
 // coders.forEach((coder)=>{
 //     const message = `Hola ${coder.name} pertenece a ${coder.cohort}`
 //     console.log(message);
-    
+
 // })
 
 //for...of
@@ -320,8 +315,6 @@
 //   console.log(`${key}: ${teamLeader[key]}`);
 // }
 
-
-
 // const user ={
 //     name: "Kevin",
 //     lastName: "Restrepo",
@@ -338,7 +331,7 @@
 // console.log(Object.entries(user));
 
 // const arrayKeys = Object.values(user)
-// console.log(arrayKeys[2])  // imprimira: 19 
+// console.log(arrayKeys[2])  // imprimira: 19
 
 //console.table() permite imprimir un array u objeto en forma de tabla
 
@@ -357,7 +350,6 @@
 // const name2 = " David Henao ";
 // const trim =  name2.trim()
 // console.log(trim);
-
 
 // split(): Divide el string en un array según un separador
 //const name3 = "David Henao";
@@ -379,7 +371,6 @@
 // repeat(): Repite el string n veces
 // padStart(): Rellena el inicio hasta alcanzar una longitud
 // padEnd(): Rellena el final hasta alcanzar una longitud
-
 
 //ejercicio de clase imprimir por separado y en español la fecha del dia
 
@@ -419,7 +410,7 @@
 
 // console.log(`La fecha de hoy es ${currentDay}  ${day} de  ${currentMonth} de ${year} y la hora es ${time}`);
 
-// //funcion para manipular el dom 
+// //funcion para manipular el dom
 // const button = document.getElementById("buttonTime");
 // button.addEventListener('click',function(){
 // const currentDate = new Date
@@ -457,45 +448,37 @@
 
 // const message =(`La fecha de hoy es ${currentDay}  ${day} de  ${currentMonth} de ${year} y la hora es ${time}`);
 // const info = document.getElementById("new_info")
-// info.textContent=message;  
+// info.textContent=message;
 // })
-
 
 // //importando funciones de otro documento
 // import { saludar, upperCase } from "./utils.js"
 // saludar()
 
-
-// //otra forma de importar 
+// //otra forma de importar
 // let name = "julian";
 // console.log(upperCase(name));
 
 //importando api del clima
-import { getWeather } from "./services/weather.js"
+import { getWeather } from "./services/weather.js";
 
-const getResult= async ()=>{
-    const result= await getWeather(city)
-    console.log(result);
-    
-}
-let city=""
+const getResult = async () => {
+  const result = await getWeather(city);
+  console.log(result);
+};
+let city = "";
 
-const cityNameInput=document.getElementById("cityName")
-const button = document.getElementById("button")
+const cityNameInput = document.getElementById("cityName");
+const button = document.getElementById("button");
 
-cityNameInput.addEventListener('input',(e)=>{
-    city=e.target.value
-})
+cityNameInput.addEventListener("input", (e) => {
+  city = e.target.value;
+});
 
-
-
-button.addEventListener('click',()=>{
-    console.log("Se hizo click");
-    getResult()
-    
-})
-
-
+button.addEventListener("click", () => {
+  console.log("Se hizo click");
+  getResult();
+});
 
 //funcion dentro de otra funcion (closure)
 // function crearMultiplicador(mul){ //mul toma el valor de 8 o 2  en linea 507 y 508
@@ -510,24 +493,23 @@ button.addEventListener('click',()=>{
 // console.log(multiplicadorPor8(100));
 // console.log(multiplicadorPor2(20));
 
-
 //callback funcion que se pasa como argumento a otra funcion
 // function saludarOtrafuncion(name,callback){
 //     console.log(`Hola ${name}`);
-    
+
 //     callback(2,4)
 // }
 
 // saludarOtrafuncion("Julian", function(a,b){
 //     console.log(a+b);
-    
+
 // })
 
 // const numbers=[1,2,3,9,8,7,0];
 
 // numbers.forEach((number)=>{
 //     console.log(number*100);
-    
+
 // })
 
 //This en funciones
@@ -545,31 +527,66 @@ button.addEventListener('click',()=>{
 // console.log(objeto.lastname)
 // console.log(objeto.saludar());
 
-
 //crear una promesa
 
-let promesa = new Promise((resolve, reject) => {
-    let falla = true;
+// let promesa = new Promise((resolve, reject) => {
+//     let falla = true;
 
-    if (falla) {
-    // Solo debes llamar a la función reject y pasarle el motivo
-    reject("Error: la operación falló"); 
-    } else {
-        setTimeout(() => {
-        resolve([
-            { name: "esteban", lastname: "perez" },
-            { name: "esteban", lastname: "perez" },
-            { name: "esteban", lastname: "perez" },
-        ]);
-        }, 3000);
-    }
+//     if (falla) {
+//     // Solo debes llamar a la función reject y pasarle el motivo
+//     reject("Error: la operación falló");
+//     } else {
+//         setTimeout(() => {
+//         resolve([
+//             { name: "esteban", lastname: "perez" },
+//             { name: "esteban", lastname: "perez" },
+//             { name: "esteban", lastname: "perez" },
+//         ]);
+//         }, 3000);
+//     }
+// });
+
+// promesa
+// .then((resp) => {
+//     console.log(resp);
+// })
+// .catch((err) => {
+//     // Ahora el catch recibe el mensaje del reject
+//     console.error(err);
+// });
+//Manipulacion del DOM
+//innerHTML permite insertar html que no existe aun
+
+// const container = document.getElementById("list")
+// button.addEventListener("click", ()=>{
+//     container.innerHTML = "<ul> <li>pera</li> <li>manzana</li> <li>banano</li></ul>";
+// })
+// //outerHTMl reemplaza un elemento completo
+
+// const btn2 = document.getElementById("btn2");
+
+// btn2.addEventListener("click", () => {
+//   btn2.outerHTML = "se borro la lista";
+// });
+
+//aplicacion de estilos desde js opcion 1
+const btn2 = document.getElementById("btn2");
+
+btn2.addEventListener("click", () => {
+btn2.style.backgroundColor = "blue";
+btn2.style.color = "white";
+btn2.style.borderRadius="15px"
+btn2.style.fontSize= "30px";
+btn2.style.cursor="pointer"
 });
 
-promesa
-.then((resp) => {
-    console.log(resp);
-})
-.catch((err) => {
-    // Ahora el catch recibe el mensaje del reject
-    console.error(err); 
-});
+//1. Métodos estándar para Atributos
+// Estos métodos funcionan con cualquier atributo que veas en una etiqueta HTML (como id, src, href, type, data-*, etc.).
+
+// getAttribute('nombre'): Obtiene el valor del atributo.
+
+// setAttribute('nombre', 'valor'): Crea o actualiza el atributo.
+
+// hasAttribute('nombre'): Devuelve true si el atributo existe.
+
+// removeAttribute('nombre'): Elimina el atributo por completo.
