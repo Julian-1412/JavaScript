@@ -590,3 +590,8 @@ btn2.style.cursor="pointer"
 // hasAttribute('nombre'): Devuelve true si el atributo existe.
 
 // removeAttribute('nombre'): Elimina el atributo por completo.
+
+
+//servidor web, API, VITE, SPA, Node JS
+
+
