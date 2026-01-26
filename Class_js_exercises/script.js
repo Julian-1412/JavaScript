@@ -326,7 +326,22 @@
 //         city: "Medellin"
 //     }
 // }
-// console.log(Object.keys(user))
+
+// 5. Objetos
+// Teoría
+// Los objetos representan entidades del mundo real mediante pares clave–valor. Son la base de las APIs y de muchas estructuras en JavaScript.
+
+// Métodos y utilidades
+// Object.keys(): Devuelve un array con todas las claves (propiedades) del objeto
+// Object.values(): Devuelve un array con todos los valores del objeto
+// Object.entries(): Devuelve un array de pares [clave, valor] del objeto
+// Ejemplo
+// let person = { name: 'Coder', age: 30, role: 'Student' };
+
+// console.log(Object.keys(person));
+// console.log(Object.values(person));
+// console.log(Object.entries(person));
+// // console.log(Object.keys(user))
 // console.log(Object.values(user));
 // console.log(Object.entries(user));
 
