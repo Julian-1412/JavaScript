@@ -1,0 +1,102 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "Juan Pérez",
+      "email": "juan@example.com",
+      "edad": 28,
+      "ciudad": "Madrid"
+    },
+    {
+      "id": "3",
+      "nombre": "Carlos Grisales",
+      "email": "carlos@example.com",
+      "edad": 18,
+      "ciudad": "Medellin"
+    },
+    {
+      "id": "acf2",
+      "name": "Esteban",
+      "email": "esteban@corre.com",
+      "age": "20",
+      "city": "bello"
+    },
+    {
+      "id": "dfc0",
+      "name": "otroUsuario",
+      "email": "otro@corre.com",
+      "age": "30",
+      "city": "la estrella"
+    },
+    {
+      "id": "e808",
+      "name": "user3000",
+      "email": "correo@correo.com",
+      "age": "18",
+      "city": "london"
+    },
+    {
+      "id": "9b6e",
+      "name": "sdfsd",
+      "email": "daves.hb@hotmail.com"
+    },
+    {
+      "id": "9875",
+      "name": "sdfsd",
+      "email": "daves.hb@hotmail.com",
+      "age": "34",
+      "city": "dsfsdfsdfd"
+    },
+    {
+      "id": "4bf5",
+      "name": "julian",
+      "email": "julian@correo.com",
+      "age": "30",
+      "city": "cali"
+    }
+  ],
+  "productos": [
+    {
+      "id": "1",
+      "nombre": "Laptop",
+      "precio": 899,
+      "stock": 5
+    },
+    {
+      "id": "2",
+      "nombre": "Mouse",
+      "precio": 25,
+      "stock": 50
+    }
+  ],
+  "todos": [
+    {
+      "id": "1b35",
+      "titulo": "Aprender JS",
+      "descripcion": "",
+      "completado": false,
+      "fechaCreacion": "2026-01-26"
+    },
+    {
+      "id": "fa5b",
+      "titulo": "Aprender JSON SERVER",
+      "descripcion": "",
+      "completado": false,
+      "fechaCreacion": "2026-01-26"
+    },
+    {
+      "id": "39da",
+      "titulo": "aprender ReactJS",
+      "descripcion": "",
+      "completado": false,
+      "fechaCreacion": "2026-01-26"
+    },
+    {
+      "id": "1b91",
+      "titulo": "algo",
+      "descripcion": "",
+      "completado": false,
+      "fechaCreacion": "2026-01-26"
+    }
+  ]
+}
