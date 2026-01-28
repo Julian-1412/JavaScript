@@ -7,13 +7,14 @@ import {
   markTodoAsComplete,
 } from "./services/todos.js";
 import "./styles/globals.css";
+import { loginUser } from "./services/login.js";
 
 export const routes = {
   "/home": "./views/home.html",
   "/login": "./views/login.html",
   "/about": "./views/about.html",
   "/contact": "./views/contact.html",
-  "/todolist": "./views/todoList.html",
+  "/todolist": "./views/todoList.html"
 };
 
 // Rutas públicas (sin login)
@@ -74,11 +75,6 @@ async function navigate(pathname) {
 }
 
 async function initLogin() {
-  const result = await getUsers();
-  const user3 = await getUserById(1);
-
-  console.log(result);
-  console.log(user3);
 
   let userInput = document.getElementById("userInput");
   let passInput = document.getElementById("passInput");
@@ -95,19 +91,26 @@ async function initLogin() {
     pass = e.target.value;
   });
 
-  buttonInput.addEventListener("click", () => {
-    if (user === "julian" && pass === "123456") {
+  buttonInput.addEventListener("click", async () => {
+    const userResp = await loginUser(user);
+
+
+    if(!userResp){
+      console.log("user not found")
+      return
+    }
+
+    if (userResp.password == pass ) {
       console.log("incio sesion");
 
       const userObjet = {
         userName: user,
         userPass: pass,
         isActive: true,
-        role: "admin",
+        role: userResp.role,
       };
 
       localStorage.setItem("userData", JSON.stringify(userObjet));
-      sessionStorage.setItem("pass", pass);
 
       // Redirigir a home después de login
       navigate("/home");
@@ -116,7 +119,7 @@ async function initLogin() {
       alert("Usuario o contraseña incorrecta");
     }
   });
-} // <--- SE AGREGÓ ESTA LLAVE PARA CERRAR initLogin CORRECTAMENTE
+}
 
 function initHome() {
   let name = document.getElementById("name");
@@ -128,8 +131,8 @@ function initHome() {
 
   let passUser = sessionStorage.getItem("pass") || "";
 
-  if (name) name.textContent = objetUser.userName;
-  if (pass) pass.textContent = passUser;
+  name.textContent = objetUser.userName;
+  pass.textContent = passUser;
 
   buttonLogout.addEventListener("click", () => {
     localStorage.removeItem("userData");
@@ -145,31 +148,12 @@ function initAbout() {
   console.log("Vista About cargada");
 }
 
-async function initContact() {
+function initContact() {
   const inputname = document.getElementById("inputName");
   const inputemail = document.getElementById("inputEmail");
   const inputage = document.getElementById("inputAge");
   const inputcity = document.getElementById("inputCity");
   const btnCreateUser = document.getElementById("btnCreateUser");
-  const userList = document.getElementById("listUserCreated");
-
-  async function loadUsers() {
-    try {
-      const users = await getUsers();
-
-      if (userList) {
-        userList.innerHTML = ""; //limpia la lista
-        users.forEach((user) => {
-          const liUsers = document.createElement("li");
-          // Usamos 'nombre' que es el campo real en tu db.json
-          liUsers.innerHTML = `${user.nombre || user.name}`;
-          userList.appendChild(liUsers);
-        });
-      }
-    } catch (error) {
-      console.log("Error al cargar usuarios", error);
-    }
-  }
 
   let name;
   let email;
@@ -191,22 +175,27 @@ async function initContact() {
 
   btnCreateUser.addEventListener("click", async () => {
     const user = {
-      nombre: name, // Cambiado a 'nombre' para que coincida con tu db.json
+      name: name,
       email: email,
-      edad: age,
-      ciudad: city,
+      age: age,
+      city: city,
     };
 
     const response = await createUser(user);
     console.log(response);
 
     if (response) {
-      console.log("Se guardo el usuario");
-      await loadUsers(); //actualiza el ul automaticamente
+      console.log("Se aguardo el usuario");
     }
+
+    // createUser(user).then((resp)=>{
+    //   console.log(resp)
+    //   if (resp){
+    //    console.log( "Se aguardo el usuario")
+    //   }
+    // })
   });
 
-  await loadUsers();
   // Lógica específica para la vista contact
   console.log("Vista Contact cargada");
 }
@@ -219,6 +208,14 @@ async function initTodoList() {
   const todoList = document.getElementById("todoList");
   const emptyState = document.getElementById("emptyState");
 
+
+  const userString = localStorage.getItem("userData");
+  const userObject = JSON.parse(userString)
+  const isAdmin = userObject.role === "admin" ? true : false
+
+  console.log(isAdmin)
+
+
   // Cargar todos al iniciar
   async function cargarTodos() {
     try {
@@ -230,7 +227,7 @@ async function initTodoList() {
   }
 
   // Agregar nuevo todo
-  if (addBtn) addBtn.addEventListener("click", agregarTodo);
+  addBtn.addEventListener("click", agregarTodo);
 
   async function agregarTodo() {
     const titulo = todoInput.value.trim();
@@ -260,9 +257,14 @@ async function initTodoList() {
 
   // Renderizar todos
   function renderizarTodos() {
-    if (!todoList) return;
     todoList.innerHTML = "";
-    if (emptyState) emptyState.style.display = "none";
+
+    // if (todos.length === 0) {
+    //   emptyState.style.display = "block";
+    //   return;
+    // }
+
+    emptyState.style.display = "none";
 
     todos.forEach((todo) => {
       const li = document.createElement("li");
@@ -279,26 +281,31 @@ async function initTodoList() {
         </div>
         <div class="todo-actions">
           <button class="btn btn-edit" data-id="${todo.id}">Editar</button>
-          <button class="btn btn-delete" data-id="${todo.id}">Eliminar</button>
+          ${isAdmin ? '<button class="btn btn-delete" data-id="${todo.id}">Eliminar</button>' : "" }
         </div>
       `;
 
+      // Event listeners para los botones
       const checkbox = li.querySelector(".todo-checkbox");
       checkbox.addEventListener("change", () => toggleCompletado(todo.id));
 
       const editBtn = li.querySelector(".btn-edit");
       editBtn.addEventListener("click", () => editarTodo(todo.id));
 
-      const deleteBtn = li.querySelector(".btn-delete");
-      deleteBtn.addEventListener("click", () => eliminarTodo(todo.id));
+      if(isAdmin){
+        const deleteBtn = li.querySelector(".btn-delete");
+        deleteBtn.addEventListener("click", () => eliminarTodo(todo.id));
+      }
 
       todoList.appendChild(li);
     });
   }
 
+  // Alternar estado completado
   async function toggleCompletado(id) {
     const todo = todos.find((t) => t.id === id);
     if (!todo) return;
+
     try {
       const nuevoEstado = !todo.completado;
       const todoActualizado = await markTodoAsComplete(id, nuevoEstado);
@@ -306,14 +313,24 @@ async function initTodoList() {
       renderizarTodos();
     } catch (error) {
       console.error("Error actualizando todo:", error);
+      alert("Error al actualizar la tarea");
     }
   }
 
+  // Editar todo
   async function editarTodo(id) {
     const todo = todos.find((t) => t.id === id);
     if (!todo) return;
+
     const nuevoTitulo = prompt("Editar tarea:", todo.titulo);
-    if (nuevoTitulo === null || !nuevoTitulo.trim()) return;
+
+    if (nuevoTitulo === null) return; // El usuario canceló
+
+    if (!nuevoTitulo.trim()) {
+      alert("El título no puede estar vacío");
+      return;
+    }
+
     try {
       const todoActualizado = await updateTodo(id, {
         ...todo,
@@ -323,20 +340,27 @@ async function initTodoList() {
       renderizarTodos();
     } catch (error) {
       console.error("Error editando todo:", error);
+      alert("Error al editar la tarea");
     }
   }
 
+  // Eliminar todo
   async function eliminarTodo(id) {
-    if (!confirm("¿Estás seguro?")) return;
+    if (!confirm("¿Estás seguro de que deseas eliminar esta tarea?")) {
+      return;
+    }
+
     try {
       await deleteTodo(id);
       todos = todos.filter((todo) => todo.id !== id);
       renderizarTodos();
     } catch (error) {
       console.error("Error eliminando todo:", error);
+      alert("Error al eliminar la tarea");
     }
   }
 
+  // Cargar todos al iniciar la página
   cargarTodos();
 }
 
