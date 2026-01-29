@@ -2,9 +2,9 @@
 const objects = { //object creation
 
 p1: {id: 1, nombre : "cuaderno", precio: 12000},
-p2: {id: 2, nombre: "libro", precio : 18000 },
+p2: {id: 2, nombre: "libro", precio : 15000 },
 p3: {id: 3, nombre: "cartuchera", precio: 7500},
-p4: {id: "cuatro", nombre: "", precio: 7500}
+p4: {id: "hola", nombre: "papel", precio: 7500}
 
 }
 
@@ -74,13 +74,18 @@ objectsMap.forEach((product, category)=>{//allows to see each category created w
 // Lista de productos únicos (Set)
 // Categorías y nombres de productos (Map)
 
-let objectsValid= Object.values(objects)
-objectsValid.forEach((product)=>{
-    if (product.nombre==="" || product.precio<0){
-        console.log(`El producto con id: ${product.id}, contiene datos errados`);
-    }else{
-        console.log(`El producto: ${product.nombre} es permitdo`);
+// let objectsValid= Object.values(objects) //initial validation with out takes into account the three final tasks
+// objectsValid.forEach((product)=>{
+//     if (product.nombre==="" || product.precio<0 || typeof product.id!=="number"){
+//         console.log(`El producto con id: ${product.id}, contiene datos errados`);
+//     }else{
+//         console.log(`El producto: ${product.nombre} es permitdo`);
         
-    }
+//     }
         
-})
+// })
+
+const objectsAprobed= new Set()
+const objectsClear = new Map()
+
+let productsArray = objects.value(product)
