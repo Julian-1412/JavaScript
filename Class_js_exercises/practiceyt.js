@@ -1,16 +1,16 @@
-// for(let num=1; num <11; num++ ){ //itera de uno a 10 
+// for(let num=1; num <11; num++ ){ //itera de uno a 10
 //     console.log(num);
-    
+
 //}
-// for(let num=10; num>=0; num--){ //itera desde 10 hasta cero 
+// for(let num=10; num>=0; num--){ //itera desde 10 hasta cero
 //     if(num===0){
 //         console.log("Despegando...");
-        
+
 //     }else{
 //         console.log(`Faltan ${num} segundos para despegar`);
-        
+
 //     }
-// }  
+// }
 // Reto: El FizzBuzz simplificado Escribe un bucle que cuente del 1 al 15 y:
 
 // Si el número es par, imprime: "El número [X] es par".
@@ -19,10 +19,10 @@
 // for(let num=1; num <=15; num++){
 //     if(num%2===0){
 //         console.log(`El numero: ${num}, es un numero par `);
-        
+
 //     }else{
 //         console.log(`El numero: ${num}, es un numero impar`);
-        
+
 //     }
 // }
 //crea una funcion que sume dos parametros
@@ -37,39 +37,77 @@
 
 //Nuevo Reto:Crea una función llamada sumarPares que reciba un número (llamémoslo limite). La función debe sumar todos los números pares que existan desde el 1 hasta ese limite y devolver el resultado total.Ejemplo: Si llamo a sumarPares(6), debería sumar 2 + 4 + 6 y devolver 12
 
-
 // function sumarPares(limite){
 //     let sumaTotal=0
 //     for(let num=1 ; num<=limite; num++){
 //         if(num%2===0){
 //             sumaTotal=sumaTotal+num
-            
+
 //         }
 //     }
-//     console.log(`La suma de los numeros pares del numero ingresado ${limite}, es igual a ${sumaTotal}`); 
-//     return sumaTotal   
+//     console.log(`La suma de los numeros pares del numero ingresado ${limite}, es igual a ${sumaTotal}`);
+//     return sumaTotal
 // }
 
 // sumarPares(6)
 
 //continue & break para imprimir solo numeros impares parando en maximo 20
 
-for(let num= 1; num<40; num++){
-    const numPar= num%2===0
-    if(numPar){
-        continue
-    }
-console.log(`El numero ${num}, es impar.`);
-    if(num===19){
-        break
-    }
-    }
+// for(let num= 1; num<40; num++){
+//     const numPar= num%2===0
+//     if(numPar){
+//         continue
+//     }
+// console.log(`El numero ${num}, es impar.`);
+//     if(num===19){
+//         break
+//     }
+//     }
 
-//ciclo for dentro de  otro ciclo for(anidados) para multiplicar por 10
-for(let num1=1;num1<=10;num1++){
-    for(let num2=1; num2<=10; num2++){
-        operacion=num1*num2
-        console.log(`Esta tabla de multiplicar arroja el siguiente resultado: ${num1} * ${num2} es igual a: ${operacion}`);
-        
+// //ciclo for dentro de  otro ciclo for(anidados) para multiplicar por 10
+// for(let num1=1;num1<=10;num1++){
+//     for(let num2=1; num2<=10; num2++){
+//         operacion=num1*num2
+//         console.log(`Esta tabla de multiplicar arroja el siguiente resultado: ${num1} * ${num2} es igual a: ${operacion}`);
+
+//     }
+// }
+
+//Dado un array de numeros enteros, encuentra dos numeros que sumen un valor objetivo y retornarlos, si no retorna un false
+//forma uno
+// const arrayEnteros = [10, 15, 5, 0, 20];
+// const valorObjetivo = 30;
+
+// function encontrarSuma(nums, objetivo) {
+//   // El primer bucle selecciona un número
+//   for (let i = 0; i < nums.length; i++) {
+//     // El segundo bucle selecciona el siguiente número para comparar
+//     for (let j = i + 1; j < nums.length; j++) {
+//       if (nums[i] + nums[j] === objetivo) {
+//         return [nums[i], nums[j]]; // Retornamos los dos números
+//       }
+//     }
+//   }
+//   return false; // Si termina y no encuentra nada
+// }
+
+// console.log(encontrarSuma(arrayEnteros, valorObjetivo));
+
+//forma 2  con for of
+
+const arrayEnteros1 = [10, 15, 5, 0, 20];
+const valorObjetivo1 = 30;
+
+function sumar(lista,objetivo){
+    for(i of lista){
+        for(j of lista){
+            if(i+j===objetivo){
+                return `El resultado es ${i+j} y proviene de la suma de los numero: ${i} y ${j}`
+            }
+        }
     }
+    return false
 }
+const resultado= sumar(arrayEnteros1,valorObjetivo1)
+console.log(resultado);
+

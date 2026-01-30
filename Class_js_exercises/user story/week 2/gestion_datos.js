@@ -4,7 +4,7 @@ const objects = { //object creation
 p1: {id: 1, nombre : "cuaderno", precio: 12000},
 p2: {id: 2, nombre: "libro", precio : 15000 },
 p3: {id: 3, nombre: "cartuchera", precio: 7500},
-p4: {id: "hola", nombre: "papel", precio: 7500},
+p4: {id: "hola", nombre: "papel", precio: 7500}, // id with mistake
 
 
 
@@ -91,24 +91,26 @@ objectsMap.forEach((product, category)=>{//allows to see each category created w
     const objectsAprobed= new Set()
     const objectsClear = new Map()
 
-    let productsArray = Object.values(objects)
+    let productsArray = Object.values(objects)//gets values from objects 
 
     console.log(productsArray);
 
-    productsArray.forEach((product) =>{
+    productsArray.forEach((product) =>{ // it iterates over each objecte in productsArray with the next validations
 
-        const  isValidId= typeof product.id==="number"
+        const  isValidId= typeof product.id==="number" //validates with typeof if is string or number
         const  isValidName= typeof product.nombre==="string"
         const  isValidPrice=typeof product.precio==="number" && product.precio>=0
 
         if(isValidId&&isValidName&&isValidPrice){
-            objectsAprobed.add(product.nombre),
-            objectsClear.set(product.id, product),
+            objectsAprobed.add(product.nombre), //it gets the approbed items  and save them by name
+            objectsClear.set(product.id, product),// it doesn't allow two items with the same id 
             console.log(`Se añadio exitosamente el producto ${product.nombre}`);
             
         }else{
             console.log(`Error en producto`, product);
             console.log(objectsClear);
+            console.log(`Los articulos guardados hasta el momento son: ${objectsAprobed}`);
+            
             
         
         
