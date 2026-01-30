@@ -4,7 +4,10 @@ const objects = { //object creation
 p1: {id: 1, nombre : "cuaderno", precio: 12000},
 p2: {id: 2, nombre: "libro", precio : 15000 },
 p3: {id: 3, nombre: "cartuchera", precio: 7500},
-p4: {id: "hola", nombre: "papel", precio: 7500}
+p4: {id: "hola", nombre: "papel", precio: 7500},
+
+
+
 
 }
 
@@ -21,7 +24,7 @@ console.log(setList);
 setList.add(4)
 setList.add(22)
 setList.add(11)
-console.log(setList);//print de addition for 22 and 11
+console.log(setList);//print the addition for 22 and 11
 console.log(setList.has(8)); // true result
 setList.delete(10) // delete number 10 from setList
 console.log(setList);
@@ -85,7 +88,31 @@ objectsMap.forEach((product, category)=>{//allows to see each category created w
         
 // })
 
-const objectsAprobed= new Set()
-const objectsClear = new Map()
+    const objectsAprobed= new Set()
+    const objectsClear = new Map()
 
-let productsArray = objects.value(product)
+    let productsArray = Object.values(objects)
+
+    console.log(productsArray);
+
+    productsArray.forEach((product) =>{
+
+        const  isValidId= typeof product.id==="number"
+        const  isValidName= typeof product.nombre==="string"
+        const  isValidPrice=typeof product.precio==="number" && product.precio>=0
+
+        if(isValidId&&isValidName&&isValidPrice){
+            objectsAprobed.add(product.nombre),
+            objectsClear.set(product.id, product),
+            console.log(`Se añadio exitosamente el producto ${product.nombre}`);
+            
+        }else{
+            console.log(`Error en producto`, product);
+            console.log(objectsClear);
+            
+        
+        
+        }
+
+    })
+
