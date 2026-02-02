@@ -4,12 +4,12 @@ export async function handleRegister(name, email, password) {
         const checkRes = await fetch(`http://localhost:3000/users?email=${email}`);
         const existingUsers = await checkRes.json();
 
-        // 2. If the array is not empty, it means the user already exists
+        // 2. Validation: If the array is not empty, the email is already in use
         if (existingUsers.length > 0) {
             throw new Error("Este correo ya esta registrado");
         }
 
-        // 3. Create the new user object (role is set to 'user' by default)
+        // 3. Object Creation: Initialize the new user structure with a default 'user' role
         const newUser = {
             name,
             email,
@@ -17,21 +17,21 @@ export async function handleRegister(name, email, password) {
             role: "user"
         };
 
-        // 4. Send a POST request to save the new user to the server
+        // 4. Persistence: Send a POST request to store the new user record in the server
         const response = await fetch('http://localhost:3000/users', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUser)
         });
 
-        // 5. Verify if the server created the user successfully
+        // 5. Response Handling: Ensure the server successfully created the resource
         if (!response.ok) throw new Error("Error creando la cuenta");
 
-        // 6. Notify the user and return true to proceed to the login view
+        // 6. Success Feedback: Alert the user and return success status for navigation logic
         alert("Cuenta creada exitosamente!");
         return true; 
     } catch (error) {
-        // 7. Show any error messages via alert
+        // 7. Error Handling: Display any caught exceptions to the user
         alert(error.message);
         return false;
     }

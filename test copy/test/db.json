@@ -1,0 +1,72 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Julian",
+      "email": "julian@correo.com",
+      "password": "123",
+      "role": "admin"
+    },
+    {
+      "id": "fa0e",
+      "name": "andres",
+      "email": "andres@correo.com",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "3e82",
+      "name": "Ramiro",
+      "email": "ramiro@correo.com",
+      "password": "123",
+      "role": "user"
+    },
+    {
+      "id": "4495",
+      "name": "David",
+      "email": "david@correo.com",
+      "password": "123",
+      "role": "user"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "101",
+      "title": "Workshop Vite + JS",
+      "description": "Aprende a configurar entornos rápidos.",
+      "status": "completed"
+    },
+    {
+      "id": "8439",
+      "title": "Capacitacion JS ",
+      "description": "Actividad obligatoria para coders",
+      "status": "completed"
+    },
+    {
+      "id": "b67c",
+      "title": "Test Assesment",
+      "description": "Prueba obligatoria",
+      "status": "completed"
+    },
+    {
+      "id": "75d9",
+      "title": "English Assesment",
+      "description": "Mandatory assesment",
+      "status": "completed"
+    },
+    {
+      "title": "Assesment",
+      "description": "Mandatory assesment beta",
+      "userId": 4495,
+      "status": "pending",
+      "id": "a21f"
+    },
+    {
+      "id": "0056",
+      "title": "Development review",
+      "description": "Work in pairs focus on backend",
+      "userId": "3e82",
+      "status": "pending"
+    }
+  ]
+}
